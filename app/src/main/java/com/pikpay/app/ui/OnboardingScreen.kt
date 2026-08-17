@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +30,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,7 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pikpay.app.R
-import com.pikpay.app.ui.theme.Accent
+import com.pikpay.app.ui.theme.AccentGradient
 import com.pikpay.app.ui.theme.TextSecondary
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -103,11 +105,13 @@ private fun CtaButton(loading: Boolean, onClick: () -> Unit) {
         enabled = !loading,
         modifier = Modifier
             .fillMaxWidth()
-            .height(54.dp),
+            .height(54.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(AccentGradient),
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Accent,
-            disabledContainerColor = Accent,
+            containerColor = Color.Transparent,
+            disabledContainerColor = Color.Transparent,
             disabledContentColor = Color.White
         )
     ) {

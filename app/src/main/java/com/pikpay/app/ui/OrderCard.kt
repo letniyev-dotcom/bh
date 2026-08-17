@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +34,7 @@ import com.pikpay.app.ui.theme.ErrorTint
 import com.pikpay.app.ui.theme.HintDivider
 import com.pikpay.app.ui.theme.Pending
 import com.pikpay.app.ui.theme.PendingTint
-import com.pikpay.app.ui.theme.Accent
+import com.pikpay.app.ui.theme.AccentGradient
 import com.pikpay.app.ui.theme.Success
 import com.pikpay.app.ui.theme.SuccessTint
 import com.pikpay.app.ui.theme.Surface
@@ -102,9 +103,13 @@ fun OrderCard(
             ) {
                 Button(
                     onClick = { onConfirm(order.id) },
-                    modifier = Modifier.weight(1f).height(40.dp),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(40.dp)
+                        .clip(RoundedCornerShape(13.dp))
+                        .background(AccentGradient),
                     shape = RoundedCornerShape(13.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Accent),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                     contentPadding = PaddingValues(horizontal = 6.dp)
                 ) {
                     Icon(painterResource(R.drawable.ic_check_circle), null, tint = Color.White, modifier = Modifier.size(15.dp))
